@@ -12,6 +12,8 @@
     <li><%= link_to product.title.upcase, "https://#{@shop_session.domain}/admin/products/#{product.id}", target: "_top" %></li>
     <li><%=  product.body_html %></li>
     <li><%=  product.attributes %></li>
+    <li><%=  product.inventory_quantity %></li>
+    
     
   <% end %>
 </ul>
