@@ -12,7 +12,7 @@
     <li><%= link_to product.title.upcase, "https://#{@shop_session.domain}/admin/products/#{product.id}", target: "_top" %></li>
     <li><%=  product.body_html %></li>
     <li><%=  product.attributes %></li>
-    <li><%=  product.variant.inventory_quantity %></li>
+    <li><%=  product.variants.inventory_quantity %></li>
     
     
   <% end %>
