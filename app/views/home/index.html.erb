@@ -11,6 +11,8 @@
   <% @products.each do |product| %>
     <li><%= link_to product.title.upcase, "https://#{@shop_session.domain}/admin/products/#{product.id}", target: "_top" %></li>
     <li><%=  product.body_html %></li>
+    <li><%=  product.variants %></li>
+    
   <% end %>
 </ul>
 
