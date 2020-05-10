@@ -13,7 +13,7 @@
     <li><%=  product.body_html %></li>
     <li><%=  product.attributes %></li>
     <% product.variants.each do |v|%>
-      <%= v.title %> - <%= v.price%>
+      <%= v.title %> - <%= v.price%> - <%= "cantidad en venta " + v.inventory_quantity%>
     <% end %>
   <% end %>
 </ul>
