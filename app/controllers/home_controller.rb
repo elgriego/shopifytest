@@ -9,7 +9,13 @@ class HomeController < AuthenticatedController
     	puts "entro aca"
     	if @ourProducts.first == nil
     		puts "entro aca 2"
-    		if @product.where(:shopify_id => product.id).first != nil
+	    	product.variants.each do |v|
+	    		@productActualQuantity = v.inventory_quantity
+	    	end
+			@newProduct = ProductQuantity.new(:shopify_id => product.id, :name => product.title, :actualQuantity => @productActualQuantity)
+			@newProduct.save
+		else
+			if @product.where(:shopify_id => product.id).first != nil
     			puts "entro aca 3"
 		    	product.variants.each do |v|
 		    		@productActualQuantity = v.inventory_quantity
