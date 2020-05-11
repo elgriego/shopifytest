@@ -1,0 +1,2 @@
+class ProductQuantity < ApplicationRecord
+end
