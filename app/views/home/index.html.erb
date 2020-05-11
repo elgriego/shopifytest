@@ -7,15 +7,23 @@
 <% end %>
 <h2>Productos</h2>
 
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title.upcase, "https://#{@shop_session.domain}/admin/products/#{product.id}", target: "_top" %></li>
-    <li><%=  product.body_html %></li>
-    <li><%=  product.attributes %></li>
-    <% product.variants.each do |v|%>
-      <%= v.title %> - <%= v.price%> - <%= v.inventory_quantity%>
-    <% end %>
-  <% end %>
-</ul>
-
-<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre del producto</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Cantidad de alerta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ourProducts.each do |product| %>
+      <tr>
+        <th scope="row">product.id</th>
+        <td><%= product.name.upcase %></td>
+        <td><%= product.actualQuantity %></td>
+        <td><%= product.minQuantity %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
