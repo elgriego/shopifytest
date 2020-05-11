@@ -6,8 +6,11 @@ class HomeController < AuthenticatedController
     @webhooks = ShopifyAPI::Webhook.find(:all)
     @ourProducts = ProductQuantity.all
     @products.each do |product|
+    	puts "entro aca"
     	if @ourProducts.first != nil
+    		puts "entro aca 2"
     		if @product.where(:shopify_id => product.id).first != nil
+    			puts "entro aca 3"
 		    	product.variants.each do |v|
 		    		@productActualQuantity = v.inventory_quantity
 		    	end
