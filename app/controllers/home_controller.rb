@@ -16,7 +16,7 @@ class HomeController < AuthenticatedController
 		end
 	else
 		@products.each do |product|
-			if @ourProducts.where(:shopify_id => product.id).first != nil
+			if @ourProducts.where(:shopify_id => product.id).first == nil
 				puts "entro aca 3"
 		    	product.variants.each do |v|
 		    		@productActualQuantity = v.inventory_quantity
