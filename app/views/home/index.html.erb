@@ -18,7 +18,7 @@
                 <input type="number" class="form-control" id="newMinStock" placeholder="Inserte nuevo stock minimo del producto">
               </div>
               <div class="modal-footer">
-                  <input class="btn btn-primary" type="button" id="btn-create" value="Actualizar precio" onclick="setNewStock()">
+                  <input class="btn btn-primary" type="button" id="btn-create" value="Actualizar stock minimo" onclick="setNewStock()">
                   <input class="btn btn-primary" type="button" id="btn-close" value="Salir" onclick="closeWindow()">
               </div>
           </div>
@@ -64,7 +64,7 @@
     idOfProductToUpdate = id;
   }
 
-  function setNewPrice(){
+  function setNewStock(){
     newStockOfProductToUpdate = document.getElementById('newMinStock').value;
     $.ajax({
       type: 'POST',
@@ -79,6 +79,10 @@
           console.log(msg)
       }
     });
+  }
+
+  function closeWindow(){
+    document.getElementById("setNewPriceDiv").style.display = "none";
   }
   
 </script>
