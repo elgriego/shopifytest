@@ -7,22 +7,26 @@
 <% end %>
 <h2>Productos</h2>
 
-<table class="table table-striped">
+<table class="table table-striped text-center">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre del producto</th>
       <th scope="col">Stock</th>
-      <th scope="col">Cantidad de alerta</th>
+      <th scope="col">Informacion</th>
     </tr>
   </thead>
   <tbody>
     <% @ourProducts.each do |product| %>
       <tr>
-        <th scope="row">product.id</th>
+        <th scope="row"><%= product.shopify_id %></th>
         <td><%= product.name.upcase %></td>
-        <td><%= product.actualQuantity %></td>
-        <td><%= product.minQuantity %></td>
+        <% if product.actualQuantity <= product.minQuantity %>
+          <button type="button" class="btn btn-danger disabled"><%= product.actualQuantity %></button>
+        <%else%>
+          <td><%= product.actualQuantity %></td>
+        <%end%>
+        <td><button type="button" class="btn btn-info">Actualizar stock minimo</button></td>
       </tr>
     <%end%>
   </tbody>
