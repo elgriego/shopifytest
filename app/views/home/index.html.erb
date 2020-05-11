@@ -66,7 +66,7 @@
 
   function setNewStock(){
     newStockOfProductToUpdate = document.getElementById('newMinStock').value;
-    jQuery.ajax({
+    $.ajax({
       type: 'POST',
       url: '/updateMinQuantity/' + idOfProductToUpdate,
       data: { newMinStock: newStockOfProductToUpdate},
