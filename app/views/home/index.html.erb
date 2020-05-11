@@ -42,7 +42,7 @@
         <th scope="row"><%= product.shopify_id %></th>
         <td><%= product.name.upcase %></td>
         <% if product.actualQuantity <= product.minQuantity %>
-          <button type="button" class="btn btn-danger disabled"><%= product.actualQuantity %></button>
+          <td><button type="button" class="btn btn-danger disabled"><%= product.actualQuantity %></button></td>
         <%else%>
           <td><%= product.actualQuantity %></td>
         <%end%>
