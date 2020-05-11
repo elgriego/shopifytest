@@ -16,15 +16,13 @@ class HomeController < AuthenticatedController
 		end
 	else
 		@products.each do |product|
-			@ourProducts.each do |outProduct|
-				if outProduct.where(:shopify_id => product.id).first != nil
-					puts "entro aca 3"
-			    	product.variants.each do |v|
-			    		@productActualQuantity = v.inventory_quantity
-			    	end
-					@newProduct = ProductQuantity.new(:shopify_id => product.id, :name => product.title, :actualQuantity => @productActualQuantity)
-					@newProduct.save
-				end
+			if @ourProducts.where(:shopify_id => product.id).first != nil
+				puts "entro aca 3"
+		    	product.variants.each do |v|
+		    		@productActualQuantity = v.inventory_quantity
+		    	end
+				@newProduct = ProductQuantity.new(:shopify_id => product.id, :name => product.title, :actualQuantity => @productActualQuantity)
+				@newProduct.save
 			end
 		end
 	end
