@@ -46,7 +46,7 @@
         <%else%>
           <td><%= product.actualQuantity %></td>
         <%end%>
-        <td><button type="button" class="btn btn-info" onclick="setNewStockToProduct(<%=product.id%>, '<%=s.name.upcase%>', <%=s.minQuantity%>)">Actualizar stock minimo</button></td>
+        <td><button type="button" class="btn btn-info" onclick="setNewStockToProduct(<%=product.id%>, '<%=product.name.upcase%>', <%=product.minQuantity%>)">Actualizar stock minimo</button></td>
       </tr>
     <%end%>
   </tbody>
