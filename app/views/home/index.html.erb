@@ -5,6 +5,26 @@
     });
   </script>
 <% end %>
+
+<div class="modal" role="dialog" id="setNewStockDiv">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" >Cambiar stock minimo de: <span id="nameOfProduct"></span></h4>
+              </div>
+              <div class="modal-body">
+                <h5>Stock minimo anterior: <span id="oldMinQuantityOfProduct"></span></h5>  
+                <h5>Nuevo stock minimo: </h5>  
+                <input type="number" class="form-control" id="newMinStock" placeholder="Inserte nuevo stock minimo del producto">
+              </div>
+              <div class="modal-footer">
+                  <input class="btn btn-primary" type="button" id="btn-create" value="Actualizar precio" onclick="setNewStock()">
+                  <input class="btn btn-primary" type="button" id="btn-close" value="Salir" onclick="closeWindow()">
+              </div>
+          </div>
+      </div>
+  </div>
+
 <h2>Productos</h2>
 
 <table class="table table-striped text-center">
@@ -26,8 +46,39 @@
         <%else%>
           <td><%= product.actualQuantity %></td>
         <%end%>
-        <td><button type="button" class="btn btn-info">Actualizar stock minimo</button></td>
+        <td><button type="button" class="btn btn-info" onclick="setNewStockToProduct(<%=product.id%>, '<%=s.name.upcase%>', <%=s.minQuantity%>)">Actualizar stock minimo</button></td>
       </tr>
     <%end%>
   </tbody>
 </table>
+
+
+<script type="text/javascript">
+  idOfProductToUpdate = 0;
+
+  function setNewPriceToProduct(id,name,minStock) {
+    document.getElementById('newMinStock').value = '';
+    document.getElementById("setNewStockDiv").style.display = "block";
+    document.getElementById('nameOfProduct').innerHTML = name;
+    document.getElementById('oldMinQuantityOfProduct').innerHTML = minStock;
+    idOfProductToUpdate = id;
+  }
+
+  function setNewPrice(){
+    newStockOfProductToUpdate = document.getElementById('newMinStock').value;
+    $.ajax({
+      type: 'POST',
+      url: '/updateMinQuantity/' + idOfProductToUpdate,
+      data: { newMinStock: newStockOfProductToUpdate},
+      success: function(msg)
+      {
+          location.reload();
+      },
+      error : function(msg)
+      {
+          console.log(msg)
+      }
+    });
+  }
+  
+</script>

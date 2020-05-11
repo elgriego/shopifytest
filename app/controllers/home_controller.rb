@@ -27,4 +27,13 @@ class HomeController < AuthenticatedController
 		end
 	end
   end
+
+  def updateMinQuantity
+  	@product = ProductQuantity.find(params[:product_id])
+	if @product.update_attribute(:minQuantity, params[:newMinStock])
+		@result = "created"
+	else
+		@result = "error"
+	end	
+  end
 end
