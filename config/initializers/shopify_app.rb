@@ -1,5 +1,5 @@
 ShopifyApp.configure do |config|
-  config.application_name = "App de Prueba"
+  config.application_name = "My Shopify App"
   config.api_key = "571f70b5ac1425c8499188a61e7281ba"
   config.secret = "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"
   config.old_secret = "<old_secret>"
