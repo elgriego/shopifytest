@@ -30,7 +30,7 @@ class HomeController < AuthenticatedController
 		creds = {
       		client_id: "4777ABAC5CEA47D38468FACC71D30A7F",
       		client_secret: "CyIkjr1DA8hT6qDHPXU60RKeli8qFh57RXktgRDkhPF6eKVI",
-      		redirect_uri: "https://teststore20203.myshopify.com/admin/apps/test-app-1986",
+      		redirect_uri: "https://shopifygt.herokuapp.com/callback",
       		scopes: "openid profile email accounting.settings accounting.reports.read accounting.journals.read accounting.contacts accounting.attachments accounting.transactions assets assets.read projects projects.read offline_access"
     	}
     	
@@ -40,12 +40,19 @@ class HomeController < AuthenticatedController
 
 	end
 
-  def updateMinQuantity
-  	@product = ProductQuantity.find(params[:product_id])
-	if @product.update_attribute(:minQuantity, params[:newMinStock])
-		@result = "created"
-	else
-		@result = "error"
-	end	
-  end
+	def callback
+	    @token_set = @xero_client.get_token_set_from_callback(params)
+	    # you can use `@xero_client.connections` to fetch info about which orgs
+	    # the user has authorized and the most recently connected tenant_id
+	    @thisIsYourToken = @token_set
+	end
+
+  	def updateMinQuantity
+  		@product = ProductQuantity.find(params[:product_id])
+		if @product.update_attribute(:minQuantity, params[:newMinStock])
+			@result = "created"
+		else
+			@result = "error"
+		end	
+  	end
 end
