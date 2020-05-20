@@ -36,7 +36,7 @@ class HomeController < AuthenticatedController
     	
     	xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
 
-    	@authorization_url = @xero_client.authorization_url
+    	@authorization_url = xero_client.authorization_url
 
 	end
 
