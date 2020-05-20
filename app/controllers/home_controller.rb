@@ -34,7 +34,9 @@ class HomeController < AuthenticatedController
       		scopes: "openid profile email accounting.settings accounting.reports.read accounting.journals.read accounting.contacts accounting.attachments accounting.transactions assets assets.read projects projects.read offline_access"
     	}
     	
-    	@xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
+    	xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
+
+    	@authorization_url = xero_client.authorization_url
 
 	end
 
