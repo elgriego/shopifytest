@@ -37,14 +37,14 @@ class HomeController < AuthenticatedController
       		scopes: "openid profile email accounting.settings accounting.reports.read accounting.journals.read accounting.contacts accounting.attachments accounting.transactions assets assets.read projects projects.read offline_access"
     	}
     	
-    	xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
+    	@xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
 
-    	@authorization_url = xero_client.authorization_url
+    	@authorization_url = @xero_client.authorization_url
 
 	end
 
 	def callback
-	    @token_set = xero_client.get_token_set_from_callback(params)
+	    @token_set = @xero_client.get_token_set_from_callback(params)
 	    # you can use `@xero_client.connections` to fetch info about which orgs
 	    # the user has authorized and the most recently connected tenant_id
 	    @thisIsYourToken = @token_set
