@@ -52,7 +52,6 @@ class HomeController < AuthenticatedController
     	
     	@xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
 
-	    return @xero_client
 	    @token_set = @xero_client.get_token_set_from_callback(params)
 	    # you can use `@xero_client.connections` to fetch info about which orgs
 	    # the user has authorized and the most recently connected tenant_id
