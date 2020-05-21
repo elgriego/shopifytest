@@ -39,7 +39,7 @@ class HomeController < AuthenticatedController
     	@xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
 
     	@authorization_url = @xero_client.authorization_url
-
+    	redirect_to 'index'
 	end
 
 	def callback
@@ -53,11 +53,13 @@ class HomeController < AuthenticatedController
     	@xero_client ||= XeroRuby::ApiClient.new(credentials: creds)
 
 	    @token_set = @xero_client.get_token_set_from_callback(params)
+
+	    ProductQuantity::VALUEOFACCES = @token_set
+
+	    
 	    # you can use `@xero_client.connections` to fetch info about which orgs
 	    # the user has authorized and the most recently connected tenant_id
 
-
-	    accesToken = @token_set
 	end
 
   	def updateMinQuantity
