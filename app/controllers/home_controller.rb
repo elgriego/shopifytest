@@ -60,7 +60,7 @@ class HomeController < AuthenticatedController
 
 	    @token_set = @xero_client.get_token_set_from_callback(params)
 
-	    redirect_to 'index', parametros: @token_set
+	    redirect_to root, parametros: @token_set
 
 	    # you can use `@xero_client.connections` to fetch info about which orgs
 	    # the user has authorized and the most recently connected tenant_id
