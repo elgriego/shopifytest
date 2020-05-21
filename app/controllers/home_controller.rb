@@ -40,7 +40,7 @@ class HomeController < AuthenticatedController
 
     	@authorization_url = @xero_client.authorization_url
 
-    	if(params.has_key?(:parametros)
+    	if(params.has_key?(:parametros))
     		@checkthisMan = params[:parametros]
     	else
     		@checkthisMan = "nada para mostrar"
