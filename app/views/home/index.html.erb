@@ -10,11 +10,11 @@
       <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h4 class="modal-title" >Cambiar stock minimo de: <span id="nameOfProduct"></span></h4>
+                  <h4 class="modal-title" >Change min stock: <span id="nameOfProduct"></span></h4>
               </div>
               <div class="modal-body">
-                <h5>Stock minimo anterior: <span id="oldMinQuantityOfProduct"></span></h5>  
-                <h5>Nuevo stock minimo: </h5>  
+                <h5>Last min stock: <span id="oldMinQuantityOfProduct"></span></h5>  
+                <h5>New min stock: </h5>  
                 <input type="number" class="form-control" id="newMinStock" placeholder="Inserte nuevo stock minimo del producto">
               </div>
               <div class="modal-footer">
@@ -25,15 +25,15 @@
       </div>
   </div>
 
-<h2>Productos</h2>
+<h2>Products</h2>
 
 <table class="table table-striped text-center">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nombre del producto</th>
+      <th scope="col">Name</th>
       <th scope="col">Stock</th>
-      <th scope="col">Informacion</th>
+      <th scope="col">Information</th>
     </tr>
   </thead>
   <tbody>
@@ -51,15 +51,6 @@
     <%end%>
   </tbody>
 </table>
-
-<%= @xero_client%>
-
-mira aca perro:
-<%= @checkthisMan%>
-
-<a href="<%= @authorization_url %>"> asd </a>
-
-
 
 <script type="text/javascript">
   idOfProductToUpdate = 0;
